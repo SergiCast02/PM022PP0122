@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM022PP0122.Views.EmplePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="0" CornerRadius="0">
+                <Label Text="Empleados" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+
+            <Label TextColor="DarkGray" Text="ID" FontSize="Title" Margin="10,10,10,0"/>
+            <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="su ID" Keyboard="Text" Margin="10,0,10,10" x:Name="txtid"/>
+
+            <Label TextColor="DarkGray" Text="Nombre" FontSize="Title" Margin="10,10,10,0"/>
+            <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="su nombre" Keyboard="Text" Margin="10,0,10,10" x:Name="txtnombre"/>
+
+            <Label TextColor="DarkGray" Text="Edad" FontSize="Title" Margin="10,10,10,0"/>
+            <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="su edad" Keyboard="Text" Margin="10,0,10,10" x:Name="txtedad"/>
+
+            <Picker Title="Seleccione un Sexo"
+        TitleColor="Black" x:Name="sexo" Margin="10,0,10,0">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Masculino</x:String>
+                        <x:String>Femenino</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <DatePicker Format="D"
+            VerticalOptions="CenterAndExpand" x:Name="fecha" Margin="10,0,10,10"/>
+
+            <Button Text="Agregar" x:Name="btnagregar" Margin="10,25,10,0" Clicked="btnagregar_Clicked"/>
+            <Button Text="Eliminar" x:Name="btneliminar" Margin="10,0,10,0" Clicked="btneliminar_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

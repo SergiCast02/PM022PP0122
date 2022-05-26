@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM022PP0122.SecondPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding nombre}}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" x:Name="lbnombre" />
+
+            <Label Text="{Binding edad}}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" x:Name="lbedad"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

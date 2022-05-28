@@ -19,7 +19,7 @@ namespace PM022PP0122.Views
             InitializeComponent();
         }
 
-        private void btnagregar_Clicked(object sender, EventArgs e)
+        private async void btnagregar_Clicked(object sender, EventArgs e)
         {
             var emple = new Empleado
             {
@@ -30,7 +30,15 @@ namespace PM022PP0122.Views
                 fechaingreso = fecha.Date
             };
 
-            App.DBase.EmpleSave(emple);
+            var result = await App.DBase.EmpleSave(emple);
+            if (result > 0)
+            {
+                await DisplayAlert("Empleado Adicionado", "Aviso", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Ha ocurrido un error", "Aviso", "OK");
+            }
         }
 
         private void btneliminar_Clicked(object sender, EventArgs e)

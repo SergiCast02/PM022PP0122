@@ -29,7 +29,7 @@ namespace PM022PP0122
             InitializeComponent();
 
             //MainPage = new MainPage();
-            MainPage = new NavigationPage(new EmplePage());
+            MainPage = new NavigationPage(new PagePrincipal());
         }
 
         protected override void OnStart()

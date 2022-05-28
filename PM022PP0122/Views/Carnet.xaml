@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM022PP0122.Views.Carnet">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="0" CornerRadius="0">
+                <Label Text="Información del Empleado" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+
+            <StackLayout Margin="20, 20, 20, 20" Padding="10, 10, 10, 10" BackgroundColor="Azure">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="ID: " HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding empleado.id}" FontSize="Medium" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nombre: " HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding empleado.nombre}" FontSize="Medium" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Edad: " HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding empleado.edad}" FontSize="Medium" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Sexo: " HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding empleado.sexo}" FontSize="Medium" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Fecha: " HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding fecha}" FontSize="Medium" FontAttributes="Bold" x:Name="txtfecha"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

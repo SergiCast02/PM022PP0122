@@ -12,18 +12,27 @@
     
     <ContentPage.Content>
         <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="0, 0, 0, 10" CornerRadius="0">
+                <Label Text="Lista de Empleados" HorizontalTextAlignment="Center" TextColor="White" FontSize="Large"/>
+            </Frame>
+
             <ListView x:Name="ListaEmpleados" ItemTapped="ListaEmpleados_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <Label Grid.Column="0"
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*" />
+                                    <ColumnDefinition Width="60*" />
+                                    <ColumnDefinition Width="30*" />
+                                </Grid.ColumnDefinitions>
+                                <Label HorizontalTextAlignment="Center" Padding="5, 10, 5, 10" Grid.Column="0" 
                                        Text="{Binding id}"/>
 
-                                <Label Grid.Column="1"
+                                <Label HorizontalTextAlignment="Start" Padding="5, 10, 5, 10" Grid.Column="1"
                                        Text="{Binding nombre}"/>
 
-                                <Label Grid.Column="2"
+                                <Label HorizontalTextAlignment="Center" Padding="5, 10, 5, 10" Grid.Column="2"
                                        Text="{Binding sexo}"/>
                             </Grid>
                         </ViewCell>

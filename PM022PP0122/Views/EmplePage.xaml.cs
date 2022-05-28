@@ -21,29 +21,57 @@ namespace PM022PP0122.Views
 
         private async void btnagregar_Clicked(object sender, EventArgs e)
         {
-            var emple = new Empleado
+            try
             {
-                id = 0,
-                nombre = txtnombre.Text,
-                edad = txtedad.Text,
-                sexo = sexo.SelectedItem.ToString(),
-                fechaingreso = fecha.Date
-            };
+                var _nombre = txtnombre.Text;
+                var _edad = txtedad.Text;
+                var _sexo = sexo.SelectedItem.ToString();
+                var _fechaingreso = fecha.Date;
 
-            var result = await App.DBase.EmpleSave(emple);
-            if (result > 0)
-            {
-                await DisplayAlert("Empleado Adicionado", "Aviso", "OK");
+                var emple = new Empleado
+                {
+                    id = 0,
+                    nombre = _nombre,
+                    edad = _edad,
+                    sexo = _sexo,
+                    fechaingreso = _fechaingreso
+                };
+
+                var result = await App.DBase.EmpleSave(emple);
+                if (result > 0)
+                {
+                    await DisplayAlert("Aviso", "Empleado adicionado", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Aviso", "Ha ocurrido un error", "OK");
+                }
+
+                bool answer = await DisplayAlert("Aviso", "¿Desea vaciar el formulario?", "Si", "No");
+                //Debug.WriteLine("Answer: " + answer);
+                if (answer)
+                {
+                    txtid.Text = null;
+                    txtnombre.Text = null;
+                    txtedad.Text = null;
+                    sexo.SelectedItem = null;
+                    fecha.Date = DateTime.Today;
+                }
             }
-            else
+            catch
             {
-                await DisplayAlert("Ha ocurrido un error", "Aviso", "OK");
+                await DisplayAlert("Aviso", "No ha rellenado todos los campos", "OK");
             }
         }
 
         private void btneliminar_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private async void btnpageemple_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PagePrincipal());
         }
     }
 }

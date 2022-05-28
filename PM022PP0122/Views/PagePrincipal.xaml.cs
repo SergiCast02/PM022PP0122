@@ -29,7 +29,7 @@ namespace PM022PP0122.Views
             var Emple = (Empleado)e.Item;
             //await DisplayAlert("Aviso","Elemento Seleccionado " + Emple.nombre, "OK");
 
-            bool answer = await DisplayAlert("Aviso", "Empleado Seleccionado: \n" + Emple.nombre, "Ver info.", "OK");
+            bool answer = await DisplayAlert("Empleado Seleccionado", Emple.nombre, "Ver info.", "OK");
             //Debug.WriteLine("Answer: " + answer);
             if (answer){verinfo(Emple);}
         }

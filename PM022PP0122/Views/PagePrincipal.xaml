@@ -8,6 +8,11 @@
                      Order="Primary"
                      Priority="0"
                      Clicked="toolmenu1_Clicked"/>
+
+        <ToolbarItem Text="Foto" x:Name="toolmenu2"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="toolmenu2_Clicked"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>

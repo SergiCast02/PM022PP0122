@@ -8,8 +8,13 @@
                 <Label Text="Empleados" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
             </Frame>
 
-            <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="ID" Margin="10,10,10,0"/>
-            <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="Ingrese su número de ID" Keyboard="Text" Margin="10,0,10,0" x:Name="txtid"/>
+            <StackLayout>
+                <StackLayout>
+                    <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="ID" Margin="10,10,10,0"/>
+                    <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="Ingrese su número de ID" Keyboard="Text" Margin="10,0,10,0" x:Name="txtid"/>
+                </StackLayout>
+                <Button Text="Buscar empleado" x:Name="btnbuscaremple" Margin="10,0,10,0" Clicked="btnbuscaremple_Clicked"></Button>
+            </StackLayout>
 
             <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="Nombre" Margin="10,10,10,0"/>
             <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="Ingrese su nombre completo" Keyboard="Text" Margin="10,0,10,0" x:Name="txtnombre"/>
@@ -38,8 +43,11 @@
             <DatePicker Format="D" x:Name="fecha" Margin="10,0,10,10"/>
 
             <StackLayout Orientation="Horizontal">
-                <Button Text="Agregar" HorizontalOptions="FillAndExpand" x:Name="btnagregar" Margin="10,10,10,10" Clicked="btnagregar_Clicked"/>
-                <Button Text="Eliminar" HorizontalOptions="FillAndExpand" x:Name="btneliminar" Margin="10,10,10,10" Clicked="btneliminar_Clicked"/>
+                <Button Text="Agregar" HorizontalOptions="FillAndExpand" x:Name="btnagregar" Margin="10,10,0,10" Clicked="btnagregar_Clicked"/>
+                <Button Text="Eliminar" HorizontalOptions="FillAndExpand" x:Name="btneliminar" Margin="0,10,0,10" Clicked="btneliminar_Clicked"/>
+                <Button Text="Actualizar" HorizontalOptions="FillAndExpand" x:Name="btnactualizar" Margin="0,10,0,10" Clicked="btnactualizar_Clicked"/>
+                <ImageButton Source="gomadeborrar.png" WidthRequest="50" Padding="10, 0, 10, 0" Margin="0,10,10,10" BackgroundColor="#00FFFFFF"
+                             x:Name="btnlimpiar" Clicked="btnlimpiar_Clicked"/>
             </StackLayout>
             
             <Button Text="Lista de Empleados" x:Name="btnpageemple" Margin="10,50,10,0" Clicked="btnpageemple_Clicked"/>

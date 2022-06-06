@@ -17,9 +17,10 @@ namespace PM022PP0122.Controller
 
             // Crearemos las tablas de la base de datos
             dbase.CreateTableAsync<Empleado>(); // Creando la tabla de Empleado
+            dbase.CreateTableAsync<Contactos>();
         }
 
-        #region Operaciones
+        #region OperacionesEmple
         // CRUD - Create - Read - Update - Delete
         // Create
         public Task<int> EmpleSave(Empleado emple)
@@ -55,5 +56,42 @@ namespace PM022PP0122.Controller
         }
 
         #endregion Operaciones
+
+        #region OperacionesContactos
+        // CRUD - Create - Read - Update - Delete
+        // Create
+        public Task<int> ContactoSave(Contactos contacto)
+        {
+            if (contacto.id != 0)
+            {
+                return dbase.UpdateAsync(contacto); // Update
+            }
+            else
+            {
+                return dbase.InsertAsync(contacto);
+            }
+        }
+
+        // Read
+        public Task<List<Contactos>> obtenerListaContacto()
+        {
+            return dbase.Table<Contactos>().ToListAsync();
+        }
+
+        // Read V2
+        public Task<Contactos> obtenerContacto(int cid)
+        {
+            return dbase.Table<Contactos>()
+                .Where(i => i.id == cid)
+                .FirstOrDefaultAsync();
+        }
+
+        // Delete
+        public Task<int> EmpleContacto(Contactos contacto)
+        {
+            return dbase.DeleteAsync(contacto);
+        }
+
+        #endregion OperacionesContactos
     }
 }

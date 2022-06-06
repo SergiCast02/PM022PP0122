@@ -59,5 +59,10 @@ namespace PM022PP0122.Views
             await Navigation.PushAsync(secondPage);
         }
         #endregion
+
+        private async void toolmenu2_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PhotoPage());
+        }
     }
 }

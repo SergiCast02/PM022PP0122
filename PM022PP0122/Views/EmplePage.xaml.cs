@@ -64,14 +64,84 @@ namespace PM022PP0122.Views
             }
         }
 
-        private void btneliminar_Clicked(object sender, EventArgs e)
+        private async void btneliminar_Clicked(object sender, EventArgs e)
         {
+            try
+            {
+                var _id = Convert.ToInt32(txtid.Text);
+                var _nombre = txtnombre.Text;
+                var _edad = txtedad.Text;
+                var _sexo = sexo.SelectedItem.ToString();
+                var _fechaingreso = fecha.Date;
 
+                var emple = new Empleado
+                {
+                    id = _id,
+                    nombre = _nombre,
+                    edad = _edad,
+                    sexo = _sexo,
+                    fechaingreso = _fechaingreso
+                };
+
+                var result = await App.DBase.EmpleDelete(emple);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Aviso", "No ha rellenado todos los campos", "OK");
+            }
         }
 
         private async void btnpageemple_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PagePrincipal());
+        }
+
+        private async void btnactualizar_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var _id = Convert.ToInt32(txtid.Text);
+                var _nombre = txtnombre.Text;
+                var _edad = txtedad.Text;
+                var _sexo = sexo.SelectedItem.ToString();
+                var _fechaingreso = fecha.Date;
+
+                var emple = new Empleado
+                {
+                    id = _id,
+                    nombre = _nombre,
+                    edad = _edad,
+                    sexo = _sexo,
+                    fechaingreso = _fechaingreso
+                };
+
+                var result = await App.DBase.EmpleSave(emple);
+            }
+            catch (Exception)
+            {
+                await DisplayAlert("Aviso", "No ha rellenado todos los campos", "OK");
+            }
+        }
+
+        private async void btnbuscaremple_Clicked(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(txtid.Text);
+            Empleado emple = await App.DBase.obtenerEmple(id);
+
+            txtid.Text = ""+emple.id;
+            txtnombre.Text = emple.nombre;
+            txtedad.Text = emple.edad;
+            sexo.SelectedItem = emple.sexo;
+            fecha.Date = emple.fechaingreso;
+        }
+
+        private void btnlimpiar_Clicked(object sender, EventArgs e)
+        {
+            txtid.Text = null;
+            txtnombre.Text = null;
+            txtedad.Text = null;
+            sexo.SelectedItem = null;
+            fecha.Date = DateTime.Today;
         }
     }
 }

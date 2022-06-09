@@ -13,5 +13,6 @@ namespace PM022PP0122.Models
         public String edad { get; set; }
         public String sexo { get; set; }
         public DateTime fechaingreso { get; set; }
+        public Byte[] foto { get; set; }
     }
 }

@@ -8,25 +8,60 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PM022PP0122.Models;
 using PM022PP0122.Controller;
+using Plugin.Media;
+using System.IO;
 
 namespace PM022PP0122.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmplePage : ContentPage
     {
+        Plugin.Media.Abstractions.MediaFile FileFoto = null;
         public EmplePage()
         {
             InitializeComponent();
+        }
+
+        private Byte[] ConvertImageToByteArray()
+        {
+            if(FileFoto != null)
+            {
+                using(MemoryStream memory = new MemoryStream())
+                {
+                    Stream stream = FileFoto.GetStream();
+                    stream.CopyTo(memory);
+                    return memory.ToArray();
+                }
+            }
+            return null;
         }
 
         private async void btnagregar_Clicked(object sender, EventArgs e)
         {
             try
             {
+                var FileFoto = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    Directory = "MisFotos",
+                    Name = "test.jpg",
+                    SaveToAlbum = true
+                });
+
+                await DisplayAlert("Path directorio", FileFoto.Path, "OK");
+
+                if (FileFoto != null)
+                {
+                    Foto.Source = ImageSource.FromStream(() =>
+                    {
+                        return FileFoto.GetStream();
+                    });
+                }
+
                 var _nombre = txtnombre.Text;
                 var _edad = txtedad.Text;
                 var _sexo = sexo.SelectedItem.ToString();
                 var _fechaingreso = fecha.Date;
+                var _foto = ConvertImageToByteArray();
 
                 var emple = new Empleado
                 {
@@ -34,7 +69,8 @@ namespace PM022PP0122.Views
                     nombre = _nombre,
                     edad = _edad,
                     sexo = _sexo,
-                    fechaingreso = _fechaingreso
+                    fechaingreso = _fechaingreso,
+                    foto = _foto
                 };
 
                 var result = await App.DBase.EmpleSave(emple);

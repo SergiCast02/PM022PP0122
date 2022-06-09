@@ -8,7 +8,11 @@
                 <Label Text="Empleados" HorizontalTextAlignment="Center" TextColor="White" FontSize="28"/>
             </Frame>
 
+            <Image x:Name="Foto" BackgroundColor="Bisque"
+                   WidthRequest="100" HeightRequest="170"/>
+
             <StackLayout>
+                <!--ID-->
                 <StackLayout>
                     <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="ID" Margin="10,10,10,0"/>
                     <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="Ingrese su número de ID" Keyboard="Text" Margin="10,0,10,0" x:Name="txtid"/>
@@ -16,15 +20,17 @@
                 <Button Text="Buscar empleado" x:Name="btnbuscaremple" Margin="10,0,10,0" Clicked="btnbuscaremple_Clicked"></Button>
             </StackLayout>
 
+            <!--NOMBRE-->
             <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="Nombre" Margin="10,10,10,0"/>
             <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="Ingrese su nombre completo" Keyboard="Text" Margin="10,0,10,0" x:Name="txtnombre"/>
 
             <StackLayout Orientation="Horizontal">
+                <!--AÑOS-->
                 <StackLayout Orientation="Vertical" WidthRequest="125">
                     <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="Edad" Margin="10,10,10,0"/>
                     <Entry TextColor="Black" PlaceholderColor="DarkGray" Placeholder="(años)" Keyboard="Numeric" Margin="10,0,10,0" x:Name="txtedad"/>
                 </StackLayout>
-
+                <!--SEXO-->
                 <StackLayout Orientation="Vertical" WidthRequest="260">
                     <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="Sexo" Margin="10,10,10,0"/>
                     <Picker Title="Seleccione un Sexo"
@@ -39,9 +45,11 @@
                 </StackLayout>
             </StackLayout>
 
+            <!--FECHA-->
             <Label TextColor="Gray" FontAttributes="Bold" FontSize="Medium" Text="Fecha" Margin="10,10,10,0"/>
             <DatePicker Format="D" x:Name="fecha" Margin="10,0,10,10"/>
 
+            <!--BOTONES: AGREGAR | ELIMINAR | ACTUALIZAR | LIMPIAR FORMULARIO-->
             <StackLayout Orientation="Horizontal">
                 <Button Text="Agregar" HorizontalOptions="FillAndExpand" x:Name="btnagregar" Margin="10,10,0,10" Clicked="btnagregar_Clicked"/>
                 <Button Text="Eliminar" HorizontalOptions="FillAndExpand" x:Name="btneliminar" Margin="0,10,0,10" Clicked="btneliminar_Clicked"/>
@@ -49,7 +57,7 @@
                 <ImageButton Source="gomadeborrar.png" WidthRequest="50" Padding="10, 0, 10, 0" Margin="0,10,10,10" BackgroundColor="#00FFFFFF"
                              x:Name="btnlimpiar" Clicked="btnlimpiar_Clicked"/>
             </StackLayout>
-            
+            <!--BOTON LISTA EMPLEADOS-->
             <Button Text="Lista de Empleados" x:Name="btnpageemple" Margin="10,50,10,0" Clicked="btnpageemple_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

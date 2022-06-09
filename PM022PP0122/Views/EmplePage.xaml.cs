@@ -38,25 +38,12 @@ namespace PM022PP0122.Views
 
         private async void btnagregar_Clicked(object sender, EventArgs e)
         {
+            if (FileFoto == null){
+                await DisplayAlert("Error", "No ha tomado una fotografía", "OK");
+                return;
+            }
             try
             {
-                var FileFoto = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
-                {
-                    Directory = "MisFotos",
-                    Name = "test.jpg",
-                    SaveToAlbum = true
-                });
-
-                await DisplayAlert("Path directorio", FileFoto.Path, "OK");
-
-                if (FileFoto != null)
-                {
-                    Foto.Source = ImageSource.FromStream(() =>
-                    {
-                        return FileFoto.GetStream();
-                    });
-                }
-
                 var _nombre = txtnombre.Text;
                 var _edad = txtedad.Text;
                 var _sexo = sexo.SelectedItem.ToString();
@@ -178,6 +165,26 @@ namespace PM022PP0122.Views
             txtedad.Text = null;
             sexo.SelectedItem = null;
             fecha.Date = DateTime.Today;
+        }
+
+        private async void btnfoto_Clicked(object sender, EventArgs e)
+        {
+            FileFoto = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "MisFotos",
+                Name = "test.jpg",
+                SaveToAlbum = true
+            });
+
+            await DisplayAlert("Path directorio", FileFoto.Path, "OK");
+
+            if (FileFoto != null)
+            {
+                Foto.Source = ImageSource.FromStream(() =>
+                {
+                    return FileFoto.GetStream();
+                });
+            }
         }
     }
 }

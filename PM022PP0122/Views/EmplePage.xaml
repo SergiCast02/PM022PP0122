@@ -11,7 +11,9 @@
             <Image x:Name="Foto" BackgroundColor="Bisque"
                    WidthRequest="100" HeightRequest="170"/>
 
-            <StackLayout>
+            <Button Text="Tomar Foto" x:Name="btntomarfoto" Clicked="btnfoto_Clicked"></Button>
+
+            <StackLayout IsVisible="false">
                 <!--ID-->
                 <StackLayout>
                     <Label TextColor="Black" FontAttributes="Bold" FontSize="Medium" Text="ID" Margin="10,10,10,0"/>
